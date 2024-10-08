@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(211, 236, 221);
+            box-sizing: border-box;
+            font-family: "Noto Serif", serif;
+            height: 100vh;
+            font-size: 15px;
+            scroll-behavior: smooth;
+        }
+
+        form {
+            background-color: rgb(114, 151, 129);
+            padding: 40px;
+            border-radius: 10px;
+            width: 30%;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            padding: 10px 10px;
+            font-size: 15px;
+            background: transparent;
+            border: 2px solid rgb(7, 7, 7);
+            border-radius: 10px;
+            margin: 10px 0px;
+            width: 92%;
+        }
+
+        select {
+            padding: 10px 0px;
+            width: 100%;
+            font-size: 15px;
+            background: transparent;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 10px 0px;
+        }
+
+        button {
+            margin-left: 90px;
+            padding: 10px;
+            font-size: 15px;
+            margin-top: 15px;
+            width: 40%;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(94, 124, 106);
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.4s ease, transform 0.4s ease;
+        }
+        button:hover{
+            background-color: rgb(58, 83, 69);
+            transform: scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <h2>YOUR DETAILS</h2>
+        <div>
+            <label for="First-name">First Name:</label><br>
+            <input type="text" name="First-name" required>
+        </div>
+        <div>
+            <label for="last-name">Last Name:</label><br>
+            <input type="text" name="Last-name" required>
+        </div>
+        <div>
+            <label for="Father-name">Father Name:</label><br>
+            <input type="text" name="Father-name" required>
+        </div>
+        <div>
+            <label for="Email">Email:</label><br>
+            <input type="email" name="Email" required>
+        </div>
+        <div>
+            <label for="Course-name">Course:</label><br>
+            <select name="Course-name">
+                <option>web And Mobile Development</option>
+                <option value="">Graphic Designing</option>
+                <option value="">Artificial intelligence</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const obj = Object.fromEntries(data);
+
+            const json = JSON.stringify(obj);
+            localStorage.setItem('form', json);
+
+            window.location.href = 'confirm.html';
+        });
+    </script>
+</body>
+
+</html>

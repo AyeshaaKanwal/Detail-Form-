@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your data</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            scroll-behavior: smooth;
+        }
+        main{
+            background-color: rgb(114, 151, 129);
+            padding: 50px;
+            border-radius: 10px;
+        }
+        span{
+            padding: 20px 0px;
+            font-size: 30px;
+            margin: 70px 0px;
+        }
+        button{
+            margin-left: 150px;
+            padding: 10px;
+            font-size: 20px;
+            margin-top: 50px;
+            width: 40%;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(61, 77, 67);
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>let's confirm your data is correct</h1>
+        <div id="data">
+
+        </div>
+        <div>
+            <button id="btn" type="submit" onclick="alert('Thankyou For Submission')">confirm</button>
+        </div>
+        <p><a href="form.html">Back <<</a></p>
+    </main>
+    <script>
+        const json = localStorage.getItem('form');  
+        const obj = JSON.parse(json);
+
+        for (key in obj) {
+            const markup = `
+        <div>
+            <span>${key}: ${obj[key]}</span>
+        </div>`;
+
+            document.getElementById('data').innerHTML += markup;
+        }
+    </script>
+</body>
+
+</html>
